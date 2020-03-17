@@ -1,31 +1,25 @@
 #!/bin/bash
-# Created by didiatworkz
+# Created by Shyam Dhawale
 header() {
 clear
 cat << "EOF"
-                            _
-   ____                    | |
-  / __ \__      _____  _ __| | __ ____
- / / _` \ \ /\ / / _ \| '__| |/ /|_  /
-| | (_| |\ V  V / (_) | |  |   <  / /
- \ \__,_| \_/\_/ \___/|_|  |_|\_\/___|
-  \____/                www.atworkz.de
+DPSIGN
 
 EOF
 echo
-echo "Screenly OSE Monitor addon"
+echo "DPSIGN Monitor addon"
 echo
 echo
 }
 
 header
-echo "Prepair Screenly Player..."
+echo "Prepair DPSIGN Player..."
 sleep 2
 
-if [ ! -e /home/pi/screenly/server.py ]
+if [ ! -e /home/pi/dpsign/server.py ]
 then
 	echo
-	echo "No ScreenlyOSE found!"
+	echo "No DPSIGN found!"
 	exit
 fi
 
@@ -34,12 +28,12 @@ echo "The installation can may be take a while.."
 echo
 echo
 echo
-sudo -u pi ansible localhost -m git -a  "repo=${1:-https://github.com/didiatworkz/screenly-ose-monitoring-addon.git} dest=/tmp/addon version=master"
+sudo -u pi ansible localhost -m git -a  "repo=${1:-https://github.com/shyamdhawale/DPSIGN-Monitoring.git} dest=/tmp/addon version=master"
 cd  /tmp/addon/
 sudo -E ansible-playbook addon.yml
 
 header
-echo "Screenly OSE Monitor addon successfuly installed"
-echo "Device is being restarted in 5 seconds!"
+echo "DPSIGN Monitor addon successfuly installed"
+#echo "Device is being restarted in 5 seconds!"
 sleep 5
-sudo reboot now
+#sudo reboot now
